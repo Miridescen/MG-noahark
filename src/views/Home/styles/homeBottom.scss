@@ -1,0 +1,43 @@
+.noahark-info {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(3, 33.33%);
+  align-items: center;
+  margin-top: 65px;
+  .info-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 135px;
+    border-right: 1px solid #d78e06;
+    text-align: center;
+  }
+  .info-item:nth-last-of-type(1) {
+    border-right: none;
+  }
+  .key {
+    font-size: 23px;
+    color: #d78e06;
+  }
+  .value {
+    font-size: 45px;
+    color: #ffffff;
+    margin-bottom: 7px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .noahark-info {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 730px) {
+  .noahark-info {
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    margin-top: 0;
+    .info-item {
+      border-right: none;
+    }
+  }
+}

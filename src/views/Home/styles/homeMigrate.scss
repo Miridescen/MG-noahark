@@ -1,0 +1,157 @@
+.home-migrate {
+  width: 100%;
+  .home-migrate-title {
+    display: inline-block;
+    border-bottom: 1px solid #ffffff;
+    line-height: 75px;
+    color: #d78e06;
+    margin: 120px 0 61px 0;
+    padding-bottom: 20px;
+  }
+  .home-migrate-form {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    max-width: 60%;
+
+    .home-migrate-ipt {
+      display: flex;
+      justify-content: space-between;
+      .migrate-input {
+        width: 100%;
+        max-width: 600px;
+        height: 75px;
+        margin-right: 20px;
+        padding: 0px 16px;
+
+        font-size: 36px;
+        .MuiInputBase-input::placeholder {
+          font-family: "Cinzel";
+          font-weight: 500;
+        }
+      }
+
+      .migrate-input-button {
+        width: 150px;
+        height: 63px;
+      }
+      .home-migrate-ipt-left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 260px;
+        height: 75px;
+        padding: 0 15px;
+        background: #1f1a21;
+        border-radius: 38px;
+
+        font-size: 36px;
+        text-align: center;
+        line-height: 75px;
+        color: #cba16f;
+        cursor: pointer;
+        .letter-lowercase {
+          font-family: Source Han Serif SC;
+        }
+        .coin-icon {
+          width: 30px;
+          height: 30px;
+          // margin-left: 8px;
+          margin-right: 26px;
+        }
+      }
+    }
+    .migrate-arr-img {
+      max-width: 880px;
+      display: flex;
+      justify-content: space-between;
+      margin: 29px 0;
+      .img-box {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-right: 20px;
+      }
+    }
+    .migrate-arr-img::after {
+      content: "";
+      min-width: 260px;
+    }
+    .home-migrate-button {
+      max-width: 600px;
+      height: 75px;
+      margin-top: 106px;
+      padding: 30px;
+    }
+    .Mui-disabled {
+      background-color: #af845a;
+    }
+  }
+}
+@media screen and (max-width: 730px) {
+  .home-migrate {
+    width: 100%;
+    min-height: auto;
+    padding: 0 20px;
+    .home-migrate-title {
+      line-height: 40px;
+      color: #d78e06;
+      margin: 60px 0 0px 0;
+      // padding-bottom: 20px;
+    }
+    .home-migrate-form {
+      justify-content: space-between;
+      max-width: 100%;
+      height: auto;
+      padding: 20px 0;
+      .home-migrate-ipt {
+        .migrate-input {
+          // max-width: 240px;
+          padding: 1.5px 5px;
+          height: auto;
+          font-size: 20px;
+          margin-right: 7px;
+        }
+        .migrate-input-button {
+          width: auto;
+          height: auto;
+          font-size: 16px;
+        }
+        .home-migrate-ipt-left {
+          min-width: 120px;
+          line-height: 1;
+          height: auto;
+          .anrk-text {
+            font-size: 20px !important;
+          }
+          .coin-icon {
+            margin-left: 5px;
+            margin-right: 5px;
+          }
+        }
+      }
+      .migrate-arr-img {
+        max-width: 880px;
+        margin: 10px 0;
+        .img-box {
+          img {
+            width: 20px;
+          }
+          width: 100%;
+          margin-right: 20px;
+        }
+      }
+      .migrate-arr-img::after {
+        content: "";
+        min-width: 160px;
+      }
+      .home-migrate-button {
+        // width: 600px;
+        font-size: 20px;
+        padding: 12px;
+        height: auto;
+        margin-top: 53px;
+      }
+    }
+  }
+}

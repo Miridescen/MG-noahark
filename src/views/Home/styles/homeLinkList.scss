@@ -1,0 +1,14 @@
+.home-link {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .link-button {
+    width: 23px;
+    height: 28px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
+  }
+}

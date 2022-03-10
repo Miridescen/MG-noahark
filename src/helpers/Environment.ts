@@ -1,0 +1,182 @@
+/**
+ * Access `process.env` in an environment helper
+ * Usage: `EnvHelper.env`
+ * - Other static methods can be added as needed per
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static
+ */
+export class EnvHelper {
+  /**
+   * @returns `process.env`
+   */
+  static env = process.env;
+  static whitespaceRegex = /\s+/;
+  static alchemyAvaxTestURI = `https://api.avax-test.network/ext/bc/C/rpc`;
+  static alchemyAvaxURI = `https://api.avax.network/ext/bc/C/rpc`;
+
+  static evionment(){
+    if (EnvHelper.env.REACT_APP_ENV === "prod") {
+      return {
+        REACT_APP_CHAIN_ID:"43114",
+        REACT_APP_CHAIN_ID_16:"0xa86a",
+        REACT_APP_CHAIN_NAME:"Avalanche Mainnet",
+        REACT_APP_CHAIN_RPC:"https://api.avax.network/ext/bc/C/rpc",
+        REACT_APP_CHAIN_BLOCK:"https://snowtrace.io/",
+      }
+    } else {
+      return {
+        REACT_APP_CHAIN_ID:"43113",
+        REACT_APP_CHAIN_ID_16:"0xa869",
+        REACT_APP_CHAIN_NAME:"Avalanche Fuji Testnet",
+        REACT_APP_CHAIN_RPC:"https://api.avax-test.network/ext/bc/C/rpc",
+        REACT_APP_CHAIN_BLOCK:"https://testnet.snowtrace.io/",
+      }
+    }
+
+ }
+  /**
+   * Returns env contingent segment api key
+   * @returns segment
+   */
+  static getSegmentKey() {
+    return EnvHelper.env.REACT_APP_SEGMENT_API_KEY;
+  }
+
+  static getGaKey() {
+    return EnvHelper.env.REACT_APP_GA_API_KEY;
+  }
+
+  static getDefaultChainID() {
+    return this.evionment().REACT_APP_CHAIN_ID;
+  }
+  static getDefaultChainID16() {
+    return this.evionment().REACT_APP_CHAIN_ID_16;
+  }
+  static getDefaultChainName() {
+    return this.evionment().REACT_APP_CHAIN_NAME;
+  }
+  static getDefaultChainRPC() {
+    return this.evionment().REACT_APP_CHAIN_RPC;
+  }
+  static getDefaultChainBlock() {
+    return this.evionment().REACT_APP_CHAIN_BLOCK;
+  }
+
+
+  static isNotEmpty(envVariable: string) {
+    if (envVariable.length > 10) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * in development environment will return the `ethers` community api key so that devs don't need to add elements to their .env
+   * @returns Array of Alchemy API URIs or empty set
+   */
+  static getAlchemyAPIKeyList() {
+    let ALCHEMY_ID_LIST: string[];
+
+    // split the provided API keys on whitespace
+    if (EnvHelper.env.REACT_APP_ALCHEMY_IDS && EnvHelper.isNotEmpty(EnvHelper.env.REACT_APP_ALCHEMY_IDS)) {
+      ALCHEMY_ID_LIST = EnvHelper.env.REACT_APP_ALCHEMY_IDS.split(EnvHelper.whitespaceRegex);
+    } else {
+      ALCHEMY_ID_LIST = [];
+    }
+
+    // now add the uri path
+    if (ALCHEMY_ID_LIST.length > 0) {
+      ALCHEMY_ID_LIST = ALCHEMY_ID_LIST.map(alchemyID => `https://eth-mainnet.alchemyapi.io/v2/${alchemyID}`);
+    } else {
+      ALCHEMY_ID_LIST = [];
+    }
+    return ALCHEMY_ID_LIST;
+  }
+
+  /**
+   * NOTE(appleseed): Infura IDs are only used as Fallbacks & are not Mandatory
+   * @returns {Array} Array of Infura API Ids
+   */
+  static getInfuraIdList() {
+    let INFURA_ID_LIST: string[];
+
+    // split the provided API keys on whitespace
+    if (EnvHelper.env.REACT_APP_INFURA_IDS && EnvHelper.isNotEmpty(EnvHelper.env.REACT_APP_INFURA_IDS)) {
+      INFURA_ID_LIST = EnvHelper.env.REACT_APP_INFURA_IDS.split(new RegExp(EnvHelper.whitespaceRegex));
+    } else {
+      INFURA_ID_LIST = [];
+    }
+
+    // now add the uri path
+    if (INFURA_ID_LIST.length > 0) {
+      INFURA_ID_LIST = INFURA_ID_LIST.map(infuraID => `https://mainnet.infura.io/v3/${infuraID}`);
+    } else {
+      INFURA_ID_LIST = [];
+    }
+    return INFURA_ID_LIST;
+  }
+
+  /**
+   * @returns {Array} Array of node url addresses or empty set
+   * node url addresses can be whitespace-separated string of "https" addresses
+   * - functionality for Websocket addresses has been deprecated due to issues with WalletConnect
+   *     - WalletConnect Issue: https://github.com/WalletConnect/walletconnect-monorepo/issues/193
+   */
+  static getSelfHostedNode() {
+    let URI_LIST: string[];
+    if (EnvHelper.env.REACT_APP_SELF_HOSTED_NODE && EnvHelper.isNotEmpty(EnvHelper.env.REACT_APP_SELF_HOSTED_NODE)) {
+      URI_LIST = EnvHelper.env.REACT_APP_SELF_HOSTED_NODE.split(new RegExp(EnvHelper.whitespaceRegex));
+    } else {
+      URI_LIST = [];
+    }
+    return URI_LIST;
+  }
+
+  /**
+   * in development will always return the `ethers` community key url even if .env is blank
+   * in prod if .env is blank API connections will fail
+   * @returns array of API urls
+   */
+  static getAPIUris() {
+    let ALL_URIs = EnvHelper.getSelfHostedNode();
+    // if (EnvHelper.env.NODE_ENV === "development" && ALL_URIs.length === 0) {
+    //   // push in the common ethers key in development
+    //   ALL_URIs.push("https://eth-mainnet.alchemyapi.io/v2/_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC");
+    // }
+    // ALL_URIs.push("https://eth-mainnet.alchemyapi.io/v2/_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC");
+    // if (ALL_URIs.length === 0) console.error("API keys must be set in the .env");
+    return ALL_URIs;
+  }
+
+  static getFallbackURIs() {
+    const ALL_URIs = [...EnvHelper.getAlchemyAPIKeyList(), ...EnvHelper.getInfuraIdList()];
+    return ALL_URIs;
+  }
+
+  static getGeoapifyAPIKey() {
+    // var apiKey = EnvHelper.env.REACT_APP_GEOAPIFY_API_KEY;
+    // if (!apiKey) {
+    //   console.warn("Missing REACT_APP_GEOAPIFY_API_KEY environment variable");
+    //   return null;
+    // }
+    // return apiKey;
+  }
+
+  static getZapperAPIKey() {
+    // EnvHelper.env.REACT_APP_ZAPPER_API
+    let apiKey = EnvHelper.env.REACT_APP_ZAPPER_API;
+    if (!apiKey) {
+      console.warn("zaps won't work without REACT_APP_ZAPPER_API key");
+    }
+    return apiKey;
+  }
+
+  static getZapperPoolAddress() {
+    // EnvHelper.env.REACT_APP_ZAPPER_POOL
+    let zapPool = EnvHelper.env.REACT_APP_ZAPPER_POOL;
+    if (!zapPool) {
+      console.warn("zaps won't work without REACT_APP_ZAPPER_POOL address");
+    }
+    return zapPool;
+  }
+}

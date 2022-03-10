@@ -1,0 +1,176 @@
+.pre-sale-content {
+  max-width: 38%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .pre-sale-button {
+    border: 0;
+    margin-top: 58px;
+    margin-bottom: 42px;
+    width: 100%;
+    height: 60px;
+    background: #252c3f;
+    border-radius: 13px;
+    font-size: 20px;
+    font-family: Gadugi;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 60px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .pre-sale-button:hover {
+    background: #5b7fde;
+  }
+  .pre-sale-button Mui-disabled {
+    color: #ffffff;
+  }
+}
+.coin-icon {
+  width: 30px;
+  height: 30px;
+  margin-left: 8px;
+
+  margin-right: 8px;
+}
+.purchase-quantity {
+  // width: 50%;
+  display: grid;
+  grid-template-columns: 100% auto;
+  justify-content: space-between;
+  align-items: center;
+}
+.purchase-quantity-left {
+  width: 131px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 29px;
+  font-family: Gadugi;
+  font-weight: bold;
+  color: #252c3f;
+  margin-left: 5px;
+  span{
+    cursor: pointer;
+  }
+}
+.corresponding-price {
+  // width: 50%;
+  display: grid;
+  grid-template-columns: 100% auto;
+  justify-content: space-between;
+  align-items: center;
+}
+.pre-sale-content .pre-sale-input {
+  height: 47px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
+  font-size: 29px;
+  font-family: Gadugi;
+  font-weight: bold;
+  color: #252c3f;
+}
+.pre-sale-content .pre-sale-input1 {
+  height: 47px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
+  font-size: 29px;
+  font-family: Gadugi;
+  font-weight: bold;
+  color: #252c3f;
+  .MuiOutlinedInput-input {
+    text-align: center;
+  }
+}
+
+.pre-sale-select .MuiSelect-selectMenu {
+  width: 110px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 29px;
+  font-family: Gadugi;
+  font-weight: bold;
+  color: #252c3f;
+}
+.pre-sale-select-item {
+  display: flex;
+  justify-content: space-around;
+
+  background-color: red;
+}
+.pre-sale-title {
+  font-size: 30px;
+  font-family: Adobe Heiti Std;
+  font-weight: normal;
+  color: #6176ac;
+  text-align: center;
+  margin: 30px 0 20px;
+}
+.pre-sale-input-max-btn {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 550px) {
+  .pre-sale-content {
+    max-width: 55%;
+    margin-left: 30px;
+  }
+  .purchase-quantity {
+    width: 100%;
+    // grid-template-columns: 65% 32.5%;
+    justify-content: flex-start;
+  }
+  .purchase-quantity-left {
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+
+    margin-left: 8px;
+    span{
+      cursor: pointer;
+    }
+
+  }
+  .corresponding-price {
+    width: 100%;
+    // grid-template-columns: 65% 32.5%;
+  }
+  .pre-sale-content .pre-sale-input {
+    height: 47px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    font-size: 20px;
+    font-family: Gadugi;
+    font-weight: bold;
+    color: #252c3f;
+    text-align: center;
+    .pre-sale-input-max-btn {
+      font-size: 22px;
+      cursor: pointer;
+    }
+  }
+  .pre-sale-select .MuiSelect-selectMenu {
+    width: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 20px;
+    font-family: Gadugi;
+    font-weight: bold;
+    color: #252c3f;
+  }
+  .pre-sale-title {
+    font-size: 20px;
+    font-family: Adobe Heiti Std;
+    font-weight: normal;
+    color: #6176ac;
+    text-align: center;
+    margin: 30px 0 20px;
+  }
+}

@@ -1,0 +1,78 @@
+#ohm-menu-button {
+  padding: 12px;
+  svg {
+    margin-right: 3px;
+    color: inherit !important;
+  }
+}
+.ohm-menu-button-hover {
+  z-index: 9;
+}
+#ohm-popper,
+#ohm-popper-pending {
+  z-index: 5;
+  //background-color: #EEEEEE !important;
+  //backdrop-filter: blur(33px);
+  //-webkit-backdrop-filter: blur(33px);
+  margin-top: 10px;
+  border-radius: 10px;
+  .MuiPaper-root.ohm-menu.theme-dark{
+    background-color: rgba(0, 0, 0) !important;
+    button {
+      &:not(:hover) {
+        background-color: rgba(0, 0, 0, 0.4) !important;
+      }
+    }
+  }
+  .MuiPaper-root.ohm-menu {
+    padding: 16px 6px 8px 6px;
+    display: flex;
+    flex-direction: column;
+    background-color: #EEEEEE !important;
+    button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 4px;
+      padding-left: 16px;
+      border: none;
+      &:not(:hover) {
+        background-color: #EEEEEE !important;
+      }
+    }
+    a {
+      svg {
+        vertical-align: middle;
+        font-size: 20px;
+        margin-left: 3px;
+      }
+    }
+    hr {
+      &.less-margin {
+        margin-bottom: 5px;
+      }
+      margin-bottom: 18px;
+    }
+  }
+
+  .add-tokens {
+    margin-bottom: 2px;
+    > p {
+      margin: 15px 0px 5px 0px;
+      text-align: center;
+      padding: 0 16px;
+    }
+    height: max-content !important;
+    width: 100%;
+    button {
+      min-height: 56px !important;
+      text-align: center !important;
+      padding-bottom: 60px;
+      padding-top: 12px;
+    }
+  }
+
+  .buy-tokens {
+    padding-bottom: 8px;
+  }
+}
